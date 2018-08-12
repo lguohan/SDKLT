@@ -927,7 +927,7 @@ ngknet_enet_open(struct net_device *ndev)
     }
 
     /* Prevent tx timeout */
-    ndev->trans_start = jiffies;
+    netif_trans_update(ndev);
 
     netif_tx_wake_all_queues(ndev);
 

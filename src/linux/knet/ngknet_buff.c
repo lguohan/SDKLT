@@ -216,7 +216,7 @@ bcmcnet_rx_buff_get(struct pdma_rx_queue *rxq, struct pdma_rx_buf *pbuf, int len
             pbuf->dma = 0;
         } else {
             pbuf->page_offset ^= PDMA_RXB_SIZE_MAX;
-            atomic_inc(&pbuf->page->_count);
+            atomic_inc(&pbuf->page->_mapcount);
             dma_sync_single_range_for_device(dev->dev, pbuf->dma, pbuf->page_offset,
                                              PDMA_RXB_SIZE_MAX, DMA_FROM_DEVICE);
         }
